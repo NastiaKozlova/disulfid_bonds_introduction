@@ -1,4 +1,4 @@
-part_start<-"/home/nastia/projects/current/NaPi2b/disulfid_bonds_introduction/"
+part_start<-"path to disulfid_bonds_introduction/"
 #save_start_file to paste0(part_start,"protein/start.pdb")
 #prepare conf and tcl files for for introduction of first disulfid bond
 system(command = paste0("Rscript --vanilla  ",part_start,"r_scripts/start_structure.R ",part_start),ignore.stdout=T,wait = T)
@@ -32,3 +32,4 @@ system(command = paste0("Rscript --vanilla  ",part_start,"r_scripts/first_bond_l
 
 system(command = paste0("Rscript --vanilla  ",part_start,"r_scripts/second_bond_din_prepare_fill_din.R ",part_start),ignore.stdout=T,wait = T)
 
+print(paste0("kate ",part_start,"second_bond/namd_stabilisation.txt"))
