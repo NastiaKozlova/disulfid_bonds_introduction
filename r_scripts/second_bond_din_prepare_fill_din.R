@@ -27,13 +27,19 @@ for (i in 1:nrow(df_structure)) {
     pdb<-read.pdb(paste0('protein_SMD/',df_structure$bonds[i],'.pdb'))
     df_pdb<-pdb$atom
     write.pdb(pdb,paste0('stablilisation/protein/',df_structure$bonds[i],'.pdb'))
-    fixed_1<-(df_structure$C3[i]-leng):(df_structure$C3[i]+leng)
-    fixed_2<-(df_structure$C4[i]-leng):(df_structure$C4[i]+leng)
+    fixed_1<-(df_structure$C1[i]-leng):(df_structure$C1[i]+leng)
+    fixed_2<-(df_structure$C2[i]-leng):(df_structure$C2[i]+leng)
+    fixed_3<-(df_structure$C3[i]-leng):(df_structure$C3[i]+leng)
+    fixed_4<-(df_structure$C4[i]-leng):(df_structure$C4[i]+leng)
     if(min(fixed_2)-max(fixed_1)<leng){
-      fixed_1<-(df_structure$C3[i]-leng):(df_structure$C4[i]-leng)
-      fixed_2<-(df_structure$C3[i]+leng):(df_structure$C4[i]+leng)
+      fixed_1<-(df_structure$C1[i]-leng):(df_structure$C1[i]-leng)
+      fixed_2<-(df_structure$C2[i]+leng):(df_structure$C2[i]+leng)
     }
-    fixed<-unique(c(fixed_1,fixed_2))
+    if(min(fixed_3)-max(fixed_4)<leng){
+      fixed_3<-(df_structure$C3[i]-leng):(df_structure$C4[i]-leng)
+      fixed_4<-(df_structure$C3[i]+leng):(df_structure$C4[i]+leng)
+    }
+    fixed<-unique(c(fixed_1,fixed_2,fixed_3,fixed_4))
     df_tcl<-data.frame(matrix(nrow = 1,ncol = 1))
     df_tcl[1,1]<-paste0('#############################################################\n',
                         '## JOB DESCRIPTION                                         ##\n',
