@@ -33,3 +33,4 @@ system(command = paste0("Rscript --vanilla  ",part_start,"r_scripts/first_bond_l
 system(command = paste0("Rscript --vanilla  ",part_start,"r_scripts/second_bond_din_prepare_fill_din.R ",part_start),ignore.stdout=T,wait = T)
 
 print(paste0("kate ",part_start,"second_bond/namd_stabilisation.txt"))
+system(command = paste0("Rscript --vanilla  ",part_start,"r_scripts/second_bond_to_third_bond.R ",part_start),ignore.stdout=T,wait = T)
