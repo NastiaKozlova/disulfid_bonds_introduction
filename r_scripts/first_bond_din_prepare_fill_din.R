@@ -76,8 +76,8 @@ for (i in 1:nrow(df_structure)) {
                         'switchdist          10.0\n',
                         'pairlistdist        14.0\n',
                         '# Integrator Parameters\n',
-                        'timestep            1.0  ;# 2fs/step\n',
-                        'rigidBonds          all  ;# needed for 2fs steps\n',
+                        'timestep            1.0  \n',
+                        'rigidBonds          all  \n',
                         'nonbondedFreq       1\n',
                         'fullElectFrequency  2\n',
                         'stepspercycle       10\n',
@@ -116,7 +116,7 @@ for (i in 1:nrow(df_structure)) {
                         'minimize            100\n',
                         'reinitvels          $temperature\n',
                         '}\n',
-                        'run 500000 ;# 0.1ns')
+                        'run 500000 ;# 0.5ns')
     write.table(df_tcl,paste0('stablilisation/',df_structure$bonds[i],'.conf'),col.names = F,row.names = F,quote = F)
     df_structure$namd[i]<-paste0("cd ",part,"stablilisation/\n",
                                  namd, "",df_structure$bonds[i],".conf >","",df_structure$bonds[i],".out" )

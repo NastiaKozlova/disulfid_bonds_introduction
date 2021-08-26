@@ -82,8 +82,8 @@ for (i in 1:nrow(df_vstar)) {
                             "switchdist          10.0\n",
                             "pairlistdist        14.0\n",
                             "# Integrator Parameters\n",
-                            "timestep            1.0  ;# 2fs/step\n",
-                            "rigidBonds          all  ;# needed for 2fs steps\n",
+                            "timestep            1.0  \n",
+                            "rigidBonds          all  \n",
                             "nonbondedFreq       1\n",
                             "fullElectFrequency  2\n",
                             "stepspercycle       10\n",
@@ -136,7 +136,7 @@ for (i in 1:nrow(df_vstar)) {
                             "minimize            100\n",
                             "reinitvels          $temperature\n",
                             "}\n",
-                            "run 500000 ;# 1ns")
+                            "run 500000 ;# 0.5ns")
         write.table(df_tcl,paste0(v_start[i],"/",df_structure$bonds[j],"_",q,".conf"),col.names = F,row.names = F,quote = F)
       }
     }
