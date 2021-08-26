@@ -2,17 +2,25 @@
 Scripts to introduce disulfide bonds to the transmembrane protein structures.
 
 Folder content:
+
 protein - put original protein structure
+
 toppar - put CHARMM Force fields
+
 r_scripts -folder with scripts
 
 r_scripts/main_script.R - main script from which all scrips are rinning
+
 r_scripts/start_structure.R - find disulfide bonds and divide them into three groups by z coordinate of CA atom of cysteines
+
 TMD=cysteins in membrane
 cyto=with z<(-18)
 extra= cysteines with z>(18)
+
 The separation of cysteines is heavily dependent on z coordinates. You should be very careful with this script r_scripts/start_structure.R and check it very carefully modify it if needed.
+
 You should run namd four times. Scripts for namd are in
+
 first_bond/namd_count.txt
 first_bond/namd_stabilisation.txt
 second_bond/namd_count.txt
