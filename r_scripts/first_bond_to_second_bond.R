@@ -15,8 +15,12 @@ for (i in 1:nrow(df_structure)) {
   }
 }
 df_structure<-df_structure%>%filter(!is.na(bonds))
-df_structure_add<-read.csv("first_bond/df_structure.csv",stringsAsFactors = F)
+df_structure_add<-read.csv("first_bond/SMD_min_length.csv",stringsAsFactors = F)
 
+df_structure_fin<-left_join(df_structure,df_structure_add,by=c( "type",   "C1"   ,  "C2" ,     "bonds"))
+df_structure_fin<-df_structure_fin%>%arrange(desc(number))
+write.csv(df_structure_fin,paste0("first_bond/df_fin_disulfide_bonds.csv"),row.names = F)
+df_structure_add<-read.csv("first_bond/df_structure.csv",stringsAsFactors = F)
 df_structure<-df_structure%>%mutate(type="glue")
 df_structure_add<-df_structure_add%>%mutate(type="glue")
 
