@@ -1,4 +1,6 @@
-part_start<-"path to disulfid_bonds_introduction/"
+part_start<-'path to MD_TM_protein/'
+part_start<-paste0(getwd(),"/")
+setwd(part_start)
 #save_start_file to paste0(part_start,"protein/start.pdb")
 #prepare conf and tcl files for for introduction of first disulfid bond
 system(command = paste0("Rscript --vanilla  ",part_start,"r_scripts/start_structure.R ",part_start),ignore.stdout=T,wait = T)
